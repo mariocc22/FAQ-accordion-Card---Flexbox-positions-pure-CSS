@@ -1,0 +1,202 @@
+:root {
+  --clr-header: hsl(238, 29%, 16%);
+  --clr-hover: hsl(14, 88%, 65%);
+  --clr-bg: linear-gradient(hsl(273, 75%, 66%), hsl(240, 73%, 65%));
+  --clr-body-txt: hsl(237, 12%, 33%);
+  --clr-body-subTxt: hsl(240, 6%, 50%);
+  --clr-dividers: hsl(240, 5%, 91%);
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 12px;
+  font-family: "Kumbh Sans", sans-serif;
+  color: var(--clr-body-txt);
+  background-image: var(--clr-bg);
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: 0;
+  margin: 1%;
+}
+/* General typography */
+h2 {
+  color: var(--clr-header);
+  font-size: 2rem;
+  text-align: center;
+}
+
+p {
+  margin: 0;
+}
+
+/* Wrappers' styles */
+.wrp {
+  position: relative;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 12em auto;
+  width: 90%;
+  border-radius: 2em;
+}
+.wrp__img {
+  position: absolute;
+  width: 15rem;
+  height: 15rem;
+  top: -8.5rem;
+  background-image: url(/images/illustration-woman-online-mobile.svg),
+    url(/images/bg-pattern-mobile.svg);
+  background-repeat: no-repeat;
+  background-position: center, center bottom;
+}
+
+.wrp__text {
+  padding: 8.5em 0 4em;
+  width: 90%;
+}
+
+/* Accordion styles */
+.accordion {
+  width: 100%;
+  overflow: hidden;
+  background: white;
+}
+
+.accordion__label {
+  padding: 1rem 0;
+}
+
+.accordion__label {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  border-bottom: 1px solid var(--clr-dividers);
+  transition: color 0.2s;
+}
+
+.accordion__label:hover {
+  color: var(--clr-hover);
+}
+
+.accordion__label::after {
+  content: "";
+  position: absolute;
+  color: var(--clr-body-txt);
+  font-weight: 400;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 0.5rem;
+  background-image: url(images/icon-arrow-down.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: transform 0.4s;
+}
+
+.accordion__content {
+  color: var(--clr-body-subTxt);
+  line-height: 1.5;
+  font-size: 0.75rem;
+  padding: 0 3rem 1rem 0;
+  display: none;
+  transition: opacity 1s ease-out;
+}
+
+.accordion__input {
+  display: none;
+}
+
+.accordion__input:checked ~ .accordion__content {
+  display: block;
+  border-bottom: 1px solid var(--clr-dividers);
+}
+
+.accordion__input:checked ~ .accordion__label::after {
+  transform: translateY(-50%) rotate(0.5turn);
+}
+
+.accordion__input:checked ~ .accordion__label {
+  color: var(--clr-header);
+  font-weight: 700;
+  border-bottom: none;
+}
+
+/* Media queries */
+@media only screen and (min-width: 600px) {
+  .wrp__img {
+    width: 20rem;
+    height: 20rem;
+    top: -11rem;
+    background-image: url(/images/illustration-woman-online-mobile.svg),
+      url(/images/bg-pattern-mobile.svg);
+    background-repeat: no-repeat;
+    background-position: center, center bottom;
+    background-size: contain, contain;
+  }
+
+  .wrp__text {
+    max-width: 30rem;
+  }
+
+  h2 {
+    margin-top: 4rem;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .wrp {
+    margin: 20rem auto;
+    display: grid;
+    max-width: 57.5rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    box-shadow: 0 2rem 2.5rem hsla(237, 12%, 33%, 0.2);
+  }
+
+  .wrp__img {
+    height: 100%;
+    width: 28rem;
+    position: relative;
+    top: 0;
+    background-image: url(/images/illustration-woman-online-desktop.svg),
+      url(/images/bg-pattern-desktop.svg);
+    background-repeat: no-repeat, no-repeat;
+    background-position: center left -4rem, top -19rem left -36.5rem;
+    background-size: contain, auto;
+  }
+
+  .wrp__img::after {
+    content: "";
+    width: 10rem;
+    height: 100%;
+    position: absolute;
+    background-image: url(/images/illustration-box-desktop.svg);
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    left: -7rem;
+    top: 2.5rem;
+  }
+  .wrp__text {
+    flex: 1;
+    max-width: 22rem;
+    padding: 5em 0 6em;
+  }
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 0.75em;
+    text-align: left;
+  }
+}
